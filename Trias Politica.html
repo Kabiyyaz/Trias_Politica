@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="id">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trias Politica - Media Pembelajaran Interaktif</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.4s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .certificate {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 8px solid #4a5568;
+            position: relative;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid #e2e8f0;
+            pointer-events: none;
+        }
+
+        .todo-item {
+            transition: all 0.3s ease;
+        }
+
+        .todo-item:hover {
+            transform: translateX(5px);
+        }
+
+        .todo-checkbox {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="bg-gradient-to-br from-green-50 to-emerald-100 min-h-full"><!-- Welcome Screen -->
+  <div id="welcomeScreen" class="fixed inset-0 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 z-50 flex items-center justify-center overflow-auto"><!-- Dekorasi Bunga -->
+   <div class="absolute top-4 left-4 text-6xl opacity-70 animate-pulse">
+    🌸
+   </div>
+   <div class="absolute top-20 right-10 text-5xl opacity-60 animate-pulse">
+    🌺
+   </div>
+   <div class="absolute bottom-10 left-16 text-7xl opacity-50 animate-bounce">
+    🌻
+   </div>
+   <div class="absolute bottom-20 right-20 text-6xl opacity-60 animate-pulse">
+    🌷
+   </div>
+   <div class="absolute top-1/3 left-10 text-4xl opacity-50">
+    🌼
+   </div>
+   <div class="absolute top-2/3 right-10 text-5xl opacity-50">
+    🌹
+   </div>
+   <div class="bg-white rounded-2xl shadow-2xl p-12 max-w-3xl w-full mx-4 text-center my-8 relative z-10">
+    <div class="text-8xl mb-6 animate-bounce">
+     🏛️
+    </div>
+    <h1 class="text-5xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">TRIAS POLITICA</h1>
+    <p class="text-2xl text-gray-700 mb-8 font-semibold">Media Pembelajaran Interaktif</p>
+    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl mb-8">
+     <h2 class="text-3xl font-bold text-gray-800 mb-6">Selamat Datang!</h2>
+     <p class="text-xl text-gray-700 mb-6">Mari Belajar Bersama:</p>
+     <div class="space-y-3">
+      <div class="bg-white p-4 rounded-lg shadow-md">
+       <p class="text-lg font-semibold text-blue-600">✨ Nurul Khomisah</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+       <p class="text-lg font-semibold text-purple-600">✨ Nabila Maula Zakia</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-md">
+       <p class="text-lg font-semibold text-pink-600">✨ Siti Magfiroh</p>
+      </div>
+     </div>
+    </div><button onclick="enterApp()" class="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-12 py-4 rounded-full hover:from-green-700 hover:to-emerald-700 transition-all duration-300 font-bold text-xl shadow-lg transform hover:scale-105"> Mulai Belajar 🚀 </button>
+   </div>
+  </div><!-- Header -->
+  <header class="bg-gradient-to-r from-green-600 to-emerald-700 text-white p-6 shadow-lg">
+   <div class="max-w-6xl mx-auto">
+    <h1 class="text-4xl font-bold text-center mb-2">🏛️ TRIAS POLITICA</h1>
+    <p class="text-center text-green-100 text-lg">Belajar 3 Kekuasaan Negara dengan Mudah dan Seru!</p>
+   </div>
+  </header><!-- Navigation -->
+  <nav class="bg-white shadow-md sticky top-0 z-40">
+   <div class="max-w-6xl mx-auto px-6">
+    <div class="flex justify-center space-x-4 py-4 flex-wrap"><button onclick="showSection('materi')" class="nav-btn bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 mb-2 font-semibold"> 📚 Materi </button> <button onclick="showSection('game')" class="nav-btn bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 transform hover:scale-105 mb-2 font-semibold"> 🎮 Permainan </button> <button onclick="showSection('quiz')" class="nav-btn bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 mb-2 font-semibold"> 🧠 Kuis </button> <button onclick="showSection('todolist')" class="nav-btn bg-lime-500 text-white px-6 py-2 rounded-lg hover:bg-lime-600 transition-all duration-300 transform hover:scale-105 mb-2 font-semibold"> 📝 Daftar Kegiatan </button>
+    </div>
+   </div>
+  </nav><!-- Main Content -->
+  <main class="max-w-6xl mx-auto p-6"><!-- Materi Section -->
+   <section id="materi" class="section-content fade-in"><!-- Pengertian Trias Politica -->
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+     <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">📖 Apa Itu Trias Politica?</h2>
+     <div class="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
+      <p class="text-xl text-gray-800 leading-relaxed mb-4"><strong>Trias Politica</strong> artinya membagi kekuasaan negara menjadi <strong>3 bagian</strong>.</p>
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">🎯 Bayangkan seperti tiga tim yang berbeda:</p>
+      <div class="bg-white p-4 rounded-lg mb-4">
+       <p class="text-lg">🏛️ <strong>Tim 1:</strong> Membuat aturan main</p>
+       <p class="text-lg">👨‍💼 <strong>Tim 2:</strong> Menjalankan aturan</p>
+       <p class="text-lg">⚖️ <strong>Tim 3:</strong> Mengadili yang melanggar aturan</p>
+      </div>
+      <p class="text-lg text-gray-700 leading-relaxed mb-4">Ide pintar ini dicetuskan oleh paman <strong>Montesquieu</strong> dari Prancis pada tahun 1748.</p>
+      <p class="text-lg text-gray-700 leading-relaxed"><strong>Kenapa dibagi 3?</strong> Supaya tidak ada yang terlalu berkuasa! Seperti bermain, kalau semua mainan dipegang satu orang, nanti tidak adil kan? Indonesia juga pakai cara ini lho!</p>
+     </div><!-- Tiga Cabang Kekuasaan -->
+     <h3 class="text-2xl font-bold text-blue-800 mb-4 text-center">3 Kekuasaan Negara</h3>
+     <div class="grid md:grid-cols-3 gap-6 mb-8"><!-- Legislatif -->
+      <div class="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-xl shadow-md">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         🏛️
+        </div>
+        <h3 class="text-2xl font-bold text-red-800 mb-3">LEGISLATIF</h3>
+        <p class="text-red-700 font-semibold mb-3 text-lg">Tim Pembuat Aturan</p>
+        <p class="text-red-600 text-base leading-relaxed">Seperti guru yang membuat peraturan kelas. Mereka bikin undang-undang (aturan negara) supaya semua orang tahu apa yang boleh dan tidak boleh.</p>
+       </div>
+      </div><!-- Eksekutif -->
+      <div class="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-xl shadow-md">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         👨‍💼
+        </div>
+        <h3 class="text-2xl font-bold text-green-800 mb-3">EKSEKUTIF</h3>
+        <p class="text-green-700 font-semibold mb-3 text-lg">Tim Pelaksana</p>
+        <p class="text-green-600 text-base leading-relaxed">Seperti ketua kelas yang memastikan aturan dijalankan. Presiden dan para menteri bekerja setiap hari untuk mengurus negara kita.</p>
+       </div>
+      </div><!-- Yudikatif -->
+      <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-xl shadow-md">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         ⚖️
+        </div>
+        <h3 class="text-2xl font-bold text-blue-800 mb-3">YUDIKATIF</h3>
+        <p class="text-blue-700 font-semibold mb-3 text-lg">Tim Pengadil</p>
+        <p class="text-blue-600 text-base leading-relaxed">Seperti hakim yang memutuskan siapa yang salah dan siapa yang benar. Mereka bekerja di pengadilan untuk menjaga keadilan.</p>
+       </div>
+      </div>
+     </div><!-- Tujuan Trias Politica -->
+     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg mb-6">
+      <h3 class="text-xl font-bold text-yellow-800 mb-3">🎯 Kenapa Harus Dibagi 3?</h3>
+      <ul class="space-y-2 text-yellow-700 text-lg">
+       <li class="flex items-center"><span class="mr-2">✅</span> Supaya tidak ada yang seenaknya sendiri</li>
+       <li class="flex items-center"><span class="mr-2">✅</span> Ketiga tim bisa saling mengawasi</li>
+       <li class="flex items-center"><span class="mr-2">✅</span> Melindungi hak-hak rakyat</li>
+       <li class="flex items-center"><span class="mr-2">✅</span> Pemerintahan jadi lebih adil</li>
+       <li class="flex items-center"><span class="mr-2">✅</span> Semua orang harus ikut aturan (hukum)</li>
+       <li class="flex items-center"><span class="mr-2">✅</span> Mencegah pemimpin yang jahat dan tidak adil</li>
+      </ul>
+     </div><!-- Penerapan di Indonesia -->
+     <div class="bg-green-50 p-6 rounded-lg mb-6 border-2 border-green-200">
+      <h3 class="text-xl font-bold text-green-800 mb-3">🇮🇩 Trias Politica di Indonesia</h3>
+      <p class="text-green-700 mb-3 text-lg leading-relaxed">Indonesia pakai cara Trias Politica sejak merdeka tahun 1945! Caranya diatur dalam buku aturan negara yang namanya <strong>UUD 1945</strong>.</p>
+      <p class="text-green-700 mb-3 text-lg leading-relaxed">Pada tahun 1999-2002, UUD 1945 diperbaiki (namanya <strong>amandemen</strong>). Seperti kamu memperbaiki tulisan yang salah, begitu juga negara memperbaiki aturannya agar lebih baik!</p>
+      <div class="bg-white p-5 rounded-lg border-2 border-green-300">
+       <h4 class="font-bold text-green-800 mb-2 text-lg">📝 Yang Berubah Setelah Diperbaiki:</h4>
+       <ul class="text-green-700 space-y-2 text-base">
+        <li class="flex items-start"><span class="mr-2">✅</span><span>Ketiga tim (Legislatif, Eksekutif, Yudikatif) bekerja sendiri-sendiri</span></li>
+        <li class="flex items-start"><span class="mr-2">✅</span><span>Mereka saling mengawasi supaya tidak ada yang curang</span></li>
+        <li class="flex items-start"><span class="mr-2">✅</span><span>Pemerintahan jadi lebih adil untuk rakyat</span></li>
+       </ul>
+      </div>
+     </div><!-- Detail Lembaga dan Wewenang dengan Popup -->
+     <div class="bg-gray-50 p-6 rounded-lg mb-6">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Siapa Saja yang Bekerja di 3 Tim Ini?</h3>
+      <p class="text-center text-gray-600 mb-6 text-lg">Klik pada setiap kartu untuk tahu lebih banyak! 👇</p>
+      <div class="grid md:grid-cols-3 gap-6"><!-- Legislatif Card --> <button onclick="openModal('legislatif')" class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+        <div class="text-center">
+         <div class="text-6xl mb-4">
+          🏛️
+         </div>
+         <h4 class="text-2xl font-bold text-red-800 mb-3">LEGISLATIF</h4>
+         <p class="text-red-700 text-base">Klik untuk tahu lebih banyak!</p>
+        </div></button> <!-- Eksekutif Card --> <button onclick="openModal('eksekutif')" class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+        <div class="text-center">
+         <div class="text-6xl mb-4">
+          👨‍💼
+         </div>
+         <h4 class="text-2xl font-bold text-green-800 mb-3">EKSEKUTIF</h4>
+         <p class="text-green-700 text-base">Klik untuk tahu lebih banyak!</p>
+        </div></button> <!-- Yudikatif Card --> <button onclick="openModal('yudikatif')" class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+        <div class="text-center">
+         <div class="text-6xl mb-4">
+          ⚖️
+         </div>
+         <h4 class="text-2xl font-bold text-blue-800 mb-3">YUDIKATIF</h4>
+         <p class="text-blue-700 text-base">Klik untuk tahu lebih banyak!</p>
+        </div></button>
+      </div>
+     </div><!-- Modal Popup -->
+     <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4" onclick="closeModal()">
+      <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90%] overflow-y-auto" onclick="event.stopPropagation()">
+       <div id="modalContent" class="p-8"><!-- Content will be inserted by JavaScript -->
+       </div>
+       <div class="sticky bottom-0 bg-white border-t p-4 text-center"><button onclick="closeModal()" class="bg-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 font-semibold"> Tutup </button>
+       </div>
+      </div>
+     </div><!-- Referensi -->
+     <div class="bg-gray-50 p-6 rounded-lg">
+      <h3 class="text-xl font-bold text-gray-800 mb-3">📚 Sumber Belajar</h3>
+      <ul class="space-y-2 text-gray-700 text-sm">
+       <li>• Buku Trias Politica karya Montesquieu (1748)</li>
+       <li>• UUD 1945 (Undang-Undang Dasar Negara Republik Indonesia)</li>
+       <li>• Buku tentang Lembaga Negara oleh Jimly Asshiddiqie</li>
+       <li>• Buku Dasar-Dasar Ilmu Politik oleh Miriam Budiardjo</li>
+      </ul>
+     </div>
+    </div>
+   </section><!-- To-Do List Section -->
+   <section id="todolist" class="section-content hidden">
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+     <h2 class="text-3xl font-bold text-yellow-800 mb-6 text-center">📝 Daftar Kegiatan Belajar Trias Politica</h2>
+     <p class="text-center text-gray-600 mb-6 text-lg">Centang kegiatan yang sudah kamu selesaikan! ✅</p>
+     <div class="bg-yellow-50 p-6 rounded-lg mb-6">
+      <div class="space-y-4" id="todoListContainer"><!-- To-Do Items will be generated by JavaScript -->
+      </div>
+     </div>
+     <div class="text-center space-y-4">
+      <div class="bg-blue-50 p-4 rounded-lg inline-block">
+       <p class="text-blue-800 font-semibold text-lg">Sudah Selesai: <span id="completedCount">0</span> / <span id="totalCount">0</span></p>
+       <div class="w-64 bg-blue-200 rounded-full h-3 mt-2">
+        <div id="progressBarTodo" class="bg-blue-600 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
+       </div>
+      </div><br><button onclick="downloadTodoList()" class="bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 font-semibold shadow-lg"> 📥 Unduh Tabel Kegiatan (PDF) </button> <button onclick="resetTodoList()" class="bg-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 font-semibold shadow-lg ml-2"> 🔄 Mulai Lagi </button>
+     </div>
+    </div>
+   </section><!-- Game Section -->
+   <section id="game" class="section-content hidden"><!-- Game Name Input -->
+    <div id="gameNameInput" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+     <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">🎮 Permainan: Tebak Kekuasaan</h2>
+     <div class="text-center mb-6">
+      <p class="text-lg text-gray-600 mb-4">Tulis namamu dulu yuk sebelum main! ✏️</p>
+      <div class="max-w-md mx-auto"><label for="gamePlayerName" class="block text-left font-semibold text-gray-700 mb-2">Namamu:</label> <input type="text" id="gamePlayerName" class="w-full p-3 border-2 border-green-300 rounded-lg focus:border-green-500 focus:outline-none mb-4" placeholder="Tulis nama kamu di sini..."> <button onclick="startGame()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-semibold"> Ayo Main! 🚀 </button>
+      </div>
+     </div>
+    </div><!-- Game Area -->
+    <div id="gameArea" class="bg-white rounded-xl shadow-lg p-8 hidden">
+     <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">🎮 Permainan: Tebak Kekuasaan</h2>
+     <div class="text-center mb-6">
+      <p class="text-lg text-gray-600 mb-4">Cocokkan tugas dengan tim yang tepat!</p>
+      <div class="bg-green-100 p-4 rounded-lg inline-block">
+       <p class="text-green-800 font-semibold">Pemain: <span id="gamePlayerDisplay" class="font-bold"></span></p>
+       <p class="text-green-800 font-semibold">Skor: <span id="score">0</span> | Benar: <span id="correct">0</span> | Salah: <span id="wrong">0</span></p>
+      </div>
+     </div>
+     <div class="max-w-4xl mx-auto">
+      <div class="bg-gray-50 p-6 rounded-lg mb-6">
+       <h3 class="text-xl font-bold mb-4 text-center">Tugas yang harus dicocokkan:</h3>
+       <div id="currentTask" class="bg-white p-4 rounded-lg shadow-md text-center">
+        <p class="text-lg font-semibold text-gray-800" id="taskText">Membuat undang-undang</p>
+       </div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 mb-6"><button onclick="checkAnswer('legislatif')" class="game-option bg-red-100 hover:bg-red-200 p-6 rounded-lg border-2 border-red-300 transition-all duration-300 transform hover:scale-105">
+        <div class="text-4xl mb-2">
+         🏛️
+        </div>
+        <div class="font-bold text-red-800">
+         LEGISLATIF
+        </div></button> <button onclick="checkAnswer('eksekutif')" class="game-option bg-green-100 hover:bg-green-200 p-6 rounded-lg border-2 border-green-300 transition-all duration-300 transform hover:scale-105">
+        <div class="text-4xl mb-2">
+         👨‍💼
+        </div>
+        <div class="font-bold text-green-800">
+         EKSEKUTIF
+        </div></button> <button onclick="checkAnswer('yudikatif')" class="game-option bg-blue-100 hover:bg-blue-200 p-6 rounded-lg border-2 border-blue-300 transition-all duration-300 transform hover:scale-105">
+        <div class="text-4xl mb-2">
+         ⚖️
+        </div>
+        <div class="font-bold text-blue-800">
+         YUDIKATIF
+        </div></button>
+      </div>
+      <div id="feedback" class="text-center mb-4 h-8"></div>
+      <div class="text-center"><button onclick="nextQuestion()" id="nextBtn" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-all duration-300 hidden"> Soal Berikutnya </button> <button onclick="resetGame()" class="bg-gray-500 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-all duration-300 ml-2"> Mulai Lagi </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Quiz Section -->
+   <section id="quiz" class="section-content hidden"><!-- Quiz Name Input -->
+    <div id="quizNameInput" class="bg-white rounded-xl shadow-lg p-8 mb-8">
+     <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">🧠 Kuis Trias Politica</h2>
+     <div class="text-center mb-6">
+      <p class="text-lg text-gray-600 mb-4">Tulis namamu dulu yuk! ✏️</p>
+      <div class="max-w-md mx-auto"><label for="quizPlayerName" class="block text-left font-semibold text-gray-700 mb-2">Namamu:</label> <input type="text" id="quizPlayerName" class="w-full p-3 border-2 border-green-300 rounded-lg focus:border-green-500 focus:outline-none mb-4" placeholder="Tulis nama kamu di sini..."> <button onclick="startQuiz()" class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-all duration-300 font-semibold"> Mulai Kuis! 🚀 </button>
+      </div>
+     </div>
+    </div><!-- Quiz Area -->
+    <div id="quizArea" class="bg-white rounded-xl shadow-lg p-8 hidden">
+     <h2 class="text-3xl font-bold text-green-800 mb-6 text-center">🧠 Kuis Trias Politica</h2>
+     <div class="mb-6">
+      <div class="bg-green-100 p-4 rounded-lg mb-4">
+       <p class="text-green-800 font-semibold">Peserta: <span id="quizPlayerDisplay" class="font-bold"></span></p>
+       <p class="text-green-800 font-semibold">Pertanyaan <span id="questionNumber">1</span> dari 10</p>
+       <div class="w-full bg-green-200 rounded-full h-2 mt-2">
+        <div id="progressBar" class="bg-green-600 h-2 rounded-full transition-all duration-300" style="width: 10%"></div>
+       </div>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-lg">
+       <h3 class="text-xl font-semibold mb-4" id="quizQuestion">Siapa yang pertama kali mengemukakan konsep Trias Politica?</h3>
+       <div class="space-y-3" id="quizOptions"><!-- Options will be populated by JavaScript -->
+       </div>
+      </div>
+     </div>
+     <div class="text-center"><button onclick="submitQuizAnswer()" id="submitQuizBtn" class="bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 disabled:opacity-50 font-semibold" disabled> Kirim Jawaban </button>
+     </div>
+    </div><!-- Quiz Result -->
+    <div id="quizResult" class="bg-white rounded-xl shadow-lg p-8 hidden text-center">
+     <div class="bg-gradient-to-r from-green-100 to-emerald-100 p-8 rounded-xl">
+      <div class="text-6xl mb-4">
+       🎉
+      </div>
+      <h3 class="text-3xl font-bold text-green-800 mb-4">Selamat!</h3>
+      <p class="text-xl mb-2">Halo <span id="finalPlayerName" class="font-bold text-green-600"></span>!</p>
+      <p class="text-xl mb-6">Kamu berhasil menyelesaikan kuis dengan skor: <span id="finalScore" class="font-bold text-green-600 text-2xl">0</span>/10</p>
+      <div id="certificatePreview" class="certificate text-white p-8 rounded-lg mb-6 max-w-2xl mx-auto">
+       <div class="text-center">
+        <h2 class="text-3xl font-bold mb-4">SERTIFIKAT PENGHARGAAN</h2>
+        <div class="text-6xl mb-4">
+         🏆
+        </div>
+        <p class="text-lg mb-2">Diberikan kepada:</p>
+        <h3 class="text-2xl font-bold mb-4" id="certName">Nama Siswa</h3>
+        <p class="text-lg mb-2">Telah menyelesaikan Kuis Trias Politica</p>
+        <p class="text-lg mb-4">dengan skor <span id="certScore" class="font-bold">0</span>/10</p>
+        <p class="text-sm" id="certDate">Tanggal:</p>
+       </div>
+      </div>
+      <div class="space-y-4"><button onclick="downloadCertificate()" class="bg-green-500 text-white px-8 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 font-semibold"> 📄 Unduh Sertifikat </button> <br><button onclick="restartQuiz()" class="bg-emerald-500 text-white px-6 py-2 rounded-lg hover:bg-emerald-600 transition-all duration-300 font-semibold"> Ulangi Kuis </button>
+      </div>
+     </div>
+    </div>
+   </section>
+  </main>
+  <script>
+        // Global Variables
+        let gameScore = 0;
+        let correctAnswers = 0;
+        let wrongAnswers = 0;
+        let currentQuestionIndex = 0;
+        let selectedQuizAnswer = -1;
+        let quizScore = 0;
+        let currentQuizQuestion = 0;
+        let quizPlayerName = '';
+        let todoItems = [];
+
+        // To-Do List Items for Elementary Students
+        const todoListData = [
+            { id: 1, task: "Membaca materi Trias Politica di aplikasi ini", category: "Belajar", completed: false },
+            { id: 2, task: "Memahami 3 cabang kekuasaan (Legislatif, Eksekutif, Yudikatif)", category: "Belajar", completed: false },
+            { id: 3, task: "Bermain permainan 'Tebak Kekuasaan'", category: "Permainan", completed: false },
+            { id: 4, task: "Mengerjakan kuis Trias Politica", category: "Evaluasi", completed: false },
+            { id: 5, task: "Menggambar 3 simbol kekuasaan di buku tugas", category: "Kreativitas", completed: false },
+            { id: 6, task: "Menceritakan Trias Politica kepada orang tua", category: "Presentasi", completed: false },
+            { id: 7, task: "Mencari contoh pemisahan kekuasaan di sekolah", category: "Observasi", completed: false },
+            { id: 8, task: "Membuat poster sederhana tentang Trias Politica", category: "Kreativitas", completed: false }
+        ];
+
+        // Game Questions
+        const gameQuestions = [
+            { task: "Tugas membuat undang-undang dilakukan oleh lembaga?", answer: "legislatif" },
+            { task: "Tugas menjalankan kebijakan pemerintah sehari-hari dilakukan oleh lembaga?", answer: "eksekutif" },
+            { task: "Tugas memberikan hukuman kepada penjahat dilakukan oleh lembaga?", answer: "yudikatif" },
+            { task: "Tugas menyetujui anggaran belanja negara (APBN) dilakukan oleh lembaga?", answer: "legislatif" },
+            { task: "Tugas memimpin para menteri dalam kabinet dilakukan oleh lembaga?", answer: "eksekutif" },
+            { task: "Tugas memeriksa apakah undang-undang sesuai dengan UUD 1945 dilakukan oleh lembaga?", answer: "yudikatif" },
+            { task: "Tugas mengawasi apakah presiden bekerja dengan baik dilakukan oleh lembaga?", answer: "legislatif" },
+            { task: "Tugas menandatangani perjanjian dengan negara lain dilakukan oleh lembaga?", answer: "eksekutif" },
+            { task: "Tugas memutuskan siapa pemenang pemilu jika ada sengketa dilakukan oleh lembaga?", answer: "yudikatif" },
+            { task: "Tugas membuat peraturan daerah (Perda) dilakukan oleh lembaga?", answer: "legislatif" },
+            { task: "Tugas menjalankan program vaksinasi untuk rakyat dilakukan oleh lembaga?", answer: "eksekutif" },
+            { task: "Tugas mengadili kasus korupsi di pengadilan dilakukan oleh lembaga?", answer: "yudikatif" },
+            { task: "Tugas menyetujui pengangkatan menteri yang dipilih presiden dilakukan oleh lembaga?", answer: "legislatif" },
+            { task: "Tugas mengeluarkan peraturan presiden (Perpres) dilakukan oleh lembaga?", answer: "eksekutif" },
+            { task: "Tugas menafsirkan isi konstitusi atau UUD 1945 dilakukan oleh lembaga?", answer: "yudikatif" }
+        ];
+
+        // Quiz Questions
+        const quizQuestions = [
+            {
+                question: "Siapa ahli yang pertama kali menjelaskan tentang Trias Politica?",
+                options: ["Montesquieu", "John Locke", "Aristoteles", "Rousseau"],
+                correct: 0
+            },
+            {
+                question: "Apa tujuan utama membagi kekuasaan negara menjadi tiga bagian?",
+                options: ["Agar keputusan cepat dibuat", "Supaya tidak ada yang terlalu berkuasa", "Agar biaya pemerintahan murah", "Supaya pekerjaan lebih cepat"],
+                correct: 1
+            },
+            {
+                question: "Lembaga mana yang bertugas membuat undang-undang di Indonesia?",
+                options: ["Presiden", "DPR (Dewan Perwakilan Rakyat)", "Mahkamah Agung", "Kepolisian"],
+                correct: 1
+            },
+            {
+                question: "Apa tugas utama lembaga Yudikatif?",
+                options: ["Membuat undang-undang", "Menjalankan pemerintahan", "Mengadili dan menegakkan hukum", "Mengawasi pemilu"],
+                correct: 2
+            },
+            {
+                question: "Apa yang dimaksud dengan saling mengawasi antar lembaga negara?",
+                options: ["Mempercepat pembuatan undang-undang", "Supaya ketiga lembaga bisa menjaga keseimbangan", "Mengurangi pertengkaran", "Membuat rakyat lebih terlibat"],
+                correct: 1
+            },
+            {
+                question: "Siapa yang berhak mengesahkan undang-undang di Indonesia?",
+                options: ["Hanya DPR", "Hanya Presiden", "DPR bersama Presiden", "Mahkamah Konstitusi"],
+                correct: 2
+            },
+            {
+                question: "Lembaga mana yang memeriksa apakah undang-undang sudah sesuai dengan UUD 1945?",
+                options: ["DPR", "Presiden", "Mahkamah Agung", "Mahkamah Konstitusi"],
+                correct: 3
+            },
+            {
+                question: "Apa artinya ketiga lembaga negara saling mengawasi satu sama lain?",
+                options: ["Membagi uang negara", "Supaya tidak ada yang berbuat curang", "Bergantian menjadi pimpinan", "Mengadakan pemilu rutin"],
+                correct: 1
+            },
+            {
+                question: "Pada tahun berapa Montesquieu menjelaskan tentang Trias Politica?",
+                options: ["1748", "1750", "1745", "1752"],
+                correct: 0
+            },
+            {
+                question: "Mana yang BUKAN termasuk prinsip Trias Politica?",
+                options: ["Memisahkan kekuasaan", "Setiap lembaga bekerja sendiri", "Saling mengawasi", "Semua kekuasaan dipegang satu orang"],
+                correct: 3
+            }
+        ];
+
+        // Modal Data - Simplified for Elementary Students
+        const modalData = {
+            legislatif: {
+                icon: '🏛️',
+                title: 'LEGISLATIF',
+                color: 'red',
+                subtitle: 'Tim Pembuat Aturan',
+                lembaga: [
+                    {
+                        name: 'DPR (Dewan Perwakilan Rakyat)',
+                        desc: 'Seperti perwakilan rakyat yang dipilih untuk membuat aturan negara. Mereka bicara mewakili keinginan rakyat.'
+                    },
+                    {
+                        name: 'DPD (Dewan Perwakilan Daerah)',
+                        desc: 'Perwakilan dari setiap daerah di Indonesia. Mereka memastikan suara daerahnya didengar.'
+                    },
+                    {
+                        name: 'MPR (Majelis Permusyawaratan Rakyat)',
+                        desc: 'Gabungan DPR dan DPD. Mereka yang melantik Presiden dan bisa mengubah UUD 1945.'
+                    },
+                    {
+                        name: 'DPRD (Dewan Perwakilan Rakyat Daerah)',
+                        desc: 'Seperti DPR tapi untuk daerah (provinsi/kabupaten/kota). Mereka buat aturan untuk daerahnya.'
+                    }
+                ],
+                wewenang: [
+                    'Membuat aturan negara (undang-undang)',
+                    'Menyetujui uang negara (APBN) untuk dipakai apa saja',
+                    'Mengawasi Presiden supaya kerja dengan baik',
+                    'Bertanya ke pemerintah kalau ada yang aneh',
+                    'Menyetujui perjanjian Indonesia dengan negara lain'
+                ]
+            },
+            eksekutif: {
+                icon: '👨‍💼',
+                title: 'EKSEKUTIF',
+                color: 'green',
+                subtitle: 'Tim Pelaksana Aturan',
+                lembaga: [
+                    {
+                        name: 'Presiden',
+                        desc: 'Pemimpin tertinggi negara Indonesia. Seperti kepala sekolah yang mengurus semua hal di negara.'
+                    },
+                    {
+                        name: 'Wakil Presiden',
+                        desc: 'Tangan kanan Presiden. Membantu Presiden mengurus negara dan bisa jadi Presiden kalau Presiden berhalangan.'
+                    },
+                    {
+                        name: 'Menteri-menteri',
+                        desc: 'Pembantu Presiden yang mengurus bidang tertentu, misalnya Menteri Pendidikan mengurus sekolah, Menteri Kesehatan mengurus rumah sakit.'
+                    },
+                    {
+                        name: 'Lembaga Pemerintah',
+                        desc: 'Organisasi negara yang membantu pemerintah bekerja, seperti Polisi, BPOM, dan lain-lain.'
+                    }
+                ],
+                wewenang: [
+                    'Menjalankan aturan yang sudah dibuat DPR',
+                    'Mengangkat menteri dan pejabat negara',
+                    'Mewakili Indonesia bertemu dengan negara lain',
+                    'Memberi maaf kepada orang yang bersalah (grasi)',
+                    'Memimpin TNI untuk menjaga negara',
+                    'Membuat peraturan pemerintah'
+                ]
+            },
+            yudikatif: {
+                icon: '⚖️',
+                title: 'YUDIKATIF',
+                color: 'blue',
+                subtitle: 'Tim Pengadil',
+                lembaga: [
+                    {
+                        name: 'MA (Mahkamah Agung)',
+                        desc: 'Pengadilan tertinggi di Indonesia. Seperti guru tertinggi yang memutuskan siapa yang benar dan salah.'
+                    },
+                    {
+                        name: 'MK (Mahkamah Konstitusi)',
+                        desc: 'Pengadilan khusus yang memeriksa apakah undang-undang sudah sesuai UUD 1945 atau belum.'
+                    },
+                    {
+                        name: 'KY (Komisi Yudisial)',
+                        desc: 'Pengawas para hakim. Mereka memastikan hakim bekerja dengan jujur dan adil.'
+                    },
+                    {
+                        name: 'Pengadilan',
+                        desc: 'Tempat mengadili orang yang melanggar aturan. Ada Pengadilan Negeri, Pengadilan Agama, dan lain-lain.'
+                    }
+                ],
+                wewenang: [
+                    'Mengadili orang yang melanggar hukum',
+                    'Memeriksa apakah undang-undang sudah sesuai UUD 1945',
+                    'Menyelesaikan pertengkaran antar lembaga negara',
+                    'Memutuskan sengketa pemilu',
+                    'Mengawasi para hakim supaya jujur',
+                    'Memastikan hukum ditegakkan dengan adil'
+                ]
+            }
+        };
+
+        // Welcome Screen Functions
+        function enterApp() {
+            document.getElementById('welcomeScreen').style.display = 'none';
+        }
+
+        // Navigation Functions
+        function showSection(sectionName) {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('fade-in');
+            });
+
+            const targetSection = document.getElementById(sectionName);
+            targetSection.classList.remove('hidden');
+            setTimeout(() => {
+                targetSection.classList.add('fade-in');
+            }, 10);
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2');
+            });
+            event.target.classList.add('ring-2', 'ring-offset-2');
+        }
+
+        // To-Do List Functions
+        function initTodoList() {
+            todoItems = JSON.parse(localStorage.getItem('triasPolliticaTodoList')) || todoListData.map(item => ({...item}));
+            renderTodoList();
+        }
+
+        function renderTodoList() {
+            const container = document.getElementById('todoListContainer');
+            container.innerHTML = '';
+
+            todoItems.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = `todo-item bg-white p-4 rounded-lg shadow-sm flex items-start space-x-3 ${item.completed ? 'completed' : ''}`;
+                
+                div.innerHTML = `
+                    <input type="checkbox" class="todo-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleTodo(${index})">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">${item.task}</p>
+                        <span class="text-xs bg-yellow-200 text-yellow-800 px-2 py-1 rounded-full">${item.category}</span>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+
+            updateTodoProgress();
+        }
+
+        function toggleTodo(index) {
+            todoItems[index].completed = !todoItems[index].completed;
+            localStorage.setItem('triasPolliticaTodoList', JSON.stringify(todoItems));
+            renderTodoList();
+        }
+
+        function updateTodoProgress() {
+            const completed = todoItems.filter(item => item.completed).length;
+            const total = todoItems.length;
+            const percentage = (completed / total) * 100;
+
+            document.getElementById('completedCount').textContent = completed;
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('progressBarTodo').style.width = `${percentage}%`;
+        }
+
+        function resetTodoList() {
+            todoItems = todoListData.map(item => ({...item, completed: false}));
+            localStorage.setItem('triasPolliticaTodoList', JSON.stringify(todoItems));
+            renderTodoList();
+        }
+
+        function downloadTodoList() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Title
+            doc.setFontSize(18);
+            doc.setFont(undefined, 'bold');
+            doc.text('DAFTAR KEGIATAN BELAJAR TRIAS POLITICA', 105, 20, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'normal');
+            doc.text('Kegiatan untuk Anak SD', 105, 28, { align: 'center' });
+
+            // Table data with checkmark for completed items
+            const tableData = todoItems.map((item, index) => [
+                index + 1,
+                item.task,
+                item.completed ? '✓' : '☐'
+            ]);
+
+            // Create table
+            doc.autoTable({
+                startY: 35,
+                head: [['No', 'Kegiatan', 'Selesai']],
+                body: tableData,
+                theme: 'grid',
+                headStyles: {
+                    fillColor: [251, 191, 36],
+                    textColor: [0, 0, 0],
+                    fontStyle: 'bold'
+                },
+                styles: {
+                    fontSize: 11,
+                    cellPadding: 6
+                },
+                columnStyles: {
+                    0: { cellWidth: 15, halign: 'center' },
+                    1: { cellWidth: 150 },
+                    2: { cellWidth: 20, halign: 'center', fontSize: 14 }
+                },
+                didParseCell: function(data) {
+                    // Color completed rows
+                    if (data.section === 'body' && data.column.index === 2) {
+                        if (data.cell.text[0] === '✓') {
+                            data.cell.styles.textColor = [34, 197, 94]; // Green color
+                            data.cell.styles.fontStyle = 'bold';
+                        }
+                    }
+                }
+            });
+
+            // Signature section
+            const finalY = doc.lastAutoTable.finalY + 15;
+            
+            doc.setFontSize(10);
+            doc.text(`Tanggal: ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`, 14, finalY);
+            
+            // Signature boxes
+            const signatureY = finalY + 10;
+            
+            // Wali Kelas
+            doc.text('Wali Kelas,', 30, signatureY);
+            doc.line(20, signatureY + 20, 80, signatureY + 20);
+            doc.text('(................................)', 30, signatureY + 25);
+            
+            // Orang Tua
+            doc.text('Orang Tua,', 140, signatureY);
+            doc.line(130, signatureY + 20, 190, signatureY + 20);
+            doc.text('(................................)', 140, signatureY + 25);
+
+            // Save
+            doc.save('Daftar_Kegiatan_Trias_Politica.pdf');
+        }
+
+        // Game Functions
+        function startGame() {
+            const nameInput = document.getElementById('gamePlayerName');
+            if (nameInput.value.trim() === '') {
+                nameInput.style.borderColor = '#ef4444';
+                nameInput.placeholder = 'Nama harus diisi!';
+                return;
+            }
+            
+            document.getElementById('gamePlayerDisplay').textContent = nameInput.value.trim();
+            document.getElementById('gameNameInput').classList.add('hidden');
+            document.getElementById('gameArea').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentQuestionIndex < gameQuestions.length) {
+                const question = gameQuestions[currentQuestionIndex];
+                document.getElementById('taskText').textContent = question.task;
+                document.getElementById('feedback').innerHTML = '';
+                document.getElementById('nextBtn').classList.add('hidden');
+                
+                const options = document.querySelectorAll('.game-option');
+                options.forEach(option => {
+                    option.classList.remove('ring-4', 'ring-green-400', 'ring-red-400');
+                    option.disabled = false;
+                });
+            } else {
+                document.getElementById('taskText').textContent = 'Permainan Selesai! 🎉';
+                document.getElementById('feedback').innerHTML = `
+                    <div class="bg-green-100 p-4 rounded-lg">
+                        <p class="text-green-800 font-bold">Permainan selesai! Skor akhir: ${gameScore}</p>
+                    </div>
+                `;
+                document.getElementById('nextBtn').classList.add('hidden');
+            }
+        }
+
+        function checkAnswer(selectedAnswer) {
+            const currentQuestion = gameQuestions[currentQuestionIndex];
+            const options = document.querySelectorAll('.game-option');
+            
+            options.forEach(option => option.disabled = true);
+
+            if (selectedAnswer === currentQuestion.answer) {
+                correctAnswers++;
+                gameScore += 10;
+                document.getElementById('feedback').innerHTML = `
+                    <div class="bg-green-100 p-3 rounded-lg bounce-in">
+                        <p class="text-green-800 font-bold">✅ Benar! +10 poin</p>
+                    </div>
+                `;
+                event.target.classList.add('ring-4', 'ring-green-400');
+            } else {
+                wrongAnswers++;
+                document.getElementById('feedback').innerHTML = `
+                    <div class="bg-red-100 p-3 rounded-lg bounce-in">
+                        <p class="text-red-800 font-bold">❌ Salah! Jawaban yang benar: ${currentQuestion.answer.toUpperCase()}</p>
+                    </div>
+                `;
+                event.target.classList.add('ring-4', 'ring-red-400');
+                options.forEach(option => {
+                    if (option.onclick.toString().includes(currentQuestion.answer)) {
+                        option.classList.add('ring-4', 'ring-green-400');
+                    }
+                });
+            }
+
+            document.getElementById('score').textContent = gameScore;
+            document.getElementById('correct').textContent = correctAnswers;
+            document.getElementById('wrong').textContent = wrongAnswers;
+            document.getElementById('nextBtn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function resetGame() {
+            gameScore = 0;
+            correctAnswers = 0;
+            wrongAnswers = 0;
+            currentQuestionIndex = 0;
+            
+            for (let i = gameQuestions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [gameQuestions[i], gameQuestions[j]] = [gameQuestions[j], gameQuestions[i]];
+            }
+            
+            document.getElementById('score').textContent = '0';
+            document.getElementById('correct').textContent = '0';
+            document.getElementById('wrong').textContent = '0';
+            
+            document.getElementById('gameNameInput').classList.remove('hidden');
+            document.getElementById('gameArea').classList.add('hidden');
+            document.getElementById('gamePlayerName').value = '';
+        }
+
+        // Quiz Functions
+        function startQuiz() {
+            const nameInput = document.getElementById('quizPlayerName');
+            if (nameInput.value.trim() === '') {
+                nameInput.style.borderColor = '#ef4444';
+                nameInput.placeholder = 'Nama harus diisi!';
+                return;
+            }
+            
+            quizPlayerName = nameInput.value.trim();
+            document.getElementById('quizPlayerDisplay').textContent = quizPlayerName;
+            document.getElementById('quizNameInput').classList.add('hidden');
+            document.getElementById('quizArea').classList.remove('hidden');
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            if (currentQuizQuestion < quizQuestions.length) {
+                const question = quizQuestions[currentQuizQuestion];
+                document.getElementById('questionNumber').textContent = currentQuizQuestion + 1;
+                document.getElementById('progressBar').style.width = `${((currentQuizQuestion + 1) / quizQuestions.length) * 100}%`;
+                document.getElementById('quizQuestion').textContent = question.question;
+                
+                const optionsContainer = document.getElementById('quizOptions');
+                optionsContainer.innerHTML = '';
+                
+                question.options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.className = 'quiz-option w-full text-left p-4 bg-white border-2 border-gray-300 rounded-lg hover:border-green-400 transition-all duration-300';
+                    button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                    button.onclick = () => selectQuizAnswer(index);
+                    optionsContainer.appendChild(button);
+                });
+                
+                selectedQuizAnswer = -1;
+                document.getElementById('submitQuizBtn').disabled = true;
+            } else {
+                document.getElementById('quizArea').classList.add('hidden');
+                document.getElementById('quizResult').classList.remove('hidden');
+                document.getElementById('finalScore').textContent = quizScore;
+                document.getElementById('finalPlayerName').textContent = quizPlayerName;
+                
+                document.getElementById('certName').textContent = quizPlayerName;
+                document.getElementById('certScore').textContent = quizScore;
+                document.getElementById('certDate').textContent = 'Tanggal: ' + new Date().toLocaleDateString('id-ID');
+            }
+        }
+
+        function selectQuizAnswer(index) {
+            selectedQuizAnswer = index;
+            
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((option, i) => {
+                if (i === index) {
+                    option.classList.add('border-green-500', 'bg-green-50');
+                } else {
+                    option.classList.remove('border-green-500', 'bg-green-50');
+                }
+            });
+            
+            document.getElementById('submitQuizBtn').disabled = false;
+        }
+
+        function submitQuizAnswer() {
+            const currentQuestion = quizQuestions[currentQuizQuestion];
+            
+            if (selectedQuizAnswer === currentQuestion.correct) {
+                quizScore++;
+            }
+            
+            currentQuizQuestion++;
+            setTimeout(() => {
+                loadQuizQuestion();
+            }, 500);
+        }
+
+        function restartQuiz() {
+            currentQuizQuestion = 0;
+            quizScore = 0;
+            selectedQuizAnswer = -1;
+            quizPlayerName = '';
+            
+            document.getElementById('quizNameInput').classList.remove('hidden');
+            document.getElementById('quizArea').classList.add('hidden');
+            document.getElementById('quizResult').classList.add('hidden');
+            document.getElementById('quizPlayerName').value = '';
+        }
+
+        function downloadCertificate() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'landscape',
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            doc.setFillColor(102, 126, 234);
+            doc.rect(0, 0, 297, 210, 'F');
+
+            doc.setDrawColor(74, 85, 104);
+            doc.setLineWidth(3);
+            doc.rect(10, 10, 277, 190);
+            
+            doc.setDrawColor(226, 232, 240);
+            doc.setLineWidth(1);
+            doc.rect(20, 20, 257, 170);
+
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(28);
+            doc.setFont(undefined, 'bold');
+            doc.text('SERTIFIKAT PENGHARGAAN', 148.5, 50, { align: 'center' });
+
+            doc.setFontSize(40);
+            doc.text('🏆', 148.5, 75, { align: 'center' });
+
+            doc.setFontSize(16);
+            doc.setFont(undefined, 'normal');
+            doc.text('Diberikan kepada:', 148.5, 95, { align: 'center' });
+
+            doc.setFontSize(24);
+            doc.setFont(undefined, 'bold');
+            doc.text(quizPlayerName, 148.5, 115, { align: 'center' });
+
+            doc.setFontSize(16);
+            doc.setFont(undefined, 'normal');
+            doc.text('Telah menyelesaikan Kuis Trias Politica', 148.5, 135, { align: 'center' });
+            doc.text(`dengan skor ${quizScore}/10`, 148.5, 150, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.text(`Tanggal: ${new Date().toLocaleDateString('id-ID')}`, 148.5, 170, { align: 'center' });
+
+            doc.save(`Sertifikat_${quizPlayerName.replace(/\s+/g, '_')}_Trias_Politica.pdf`);
+        }
+
+        // Modal Functions
+        function openModal(type) {
+            const data = modalData[type];
+            const modalContent = document.getElementById('modalContent');
+            const modalOverlay = document.getElementById('modalOverlay');
+            
+            let lembagaHTML = '';
+            data.lembaga.forEach(item => {
+                lembagaHTML += `
+                    <div class="bg-${data.color}-50 p-4 rounded-lg">
+                        <h6 class="font-semibold text-${data.color}-800 mb-2">${data.icon} ${item.name}</h6>
+                        <p class="text-sm text-${data.color}-700">${item.desc}</p>
+                    </div>
+                `;
+            });
+            
+            let wewenangHTML = '';
+            data.wewenang.forEach(item => {
+                wewenangHTML += `
+                    <li class="flex items-start"><span class="mr-2 text-xl">✓</span><span>${item}</span></li>
+                `;
+            });
+            
+            modalContent.innerHTML = `
+                <div class="text-center mb-6">
+                    <div class="text-7xl mb-4">${data.icon}</div>
+                    <h3 class="text-3xl font-bold text-${data.color}-800 mb-2">${data.title}</h3>
+                    <p class="text-xl text-${data.color}-600">${data.subtitle}</p>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg mb-6">
+                    <h5 class="text-xl font-bold text-${data.color}-800 mb-4">Siapa Saja yang Bekerja di Tim ${data.title}?</h5>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        ${lembagaHTML}
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 rounded-lg">
+                    <h5 class="text-xl font-bold text-${data.color}-800 mb-4">Apa yang Mereka Kerjakan?</h5>
+                    <ul class="space-y-2 text-${data.color}-700">
+                        ${wewenangHTML}
+                    </ul>
+                </div>
+            `;
+            
+            modalOverlay.classList.remove('hidden');
+            modalOverlay.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modalOverlay = document.getElementById('modalOverlay');
+            modalOverlay.classList.add('hidden');
+            modalOverlay.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            for (let i = gameQuestions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [gameQuestions[i], gameQuestions[j]] = [gameQuestions[j], gameQuestions[i]];
+            }
+            
+            initTodoList();
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a32d26c83a387a7',t:'MTc2MzkyMzUwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
